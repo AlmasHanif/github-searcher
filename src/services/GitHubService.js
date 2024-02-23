@@ -1,23 +1,22 @@
+
 import axios from 'axios';
 
-// Base URL for GitHub API
-const BASE_URL = 'https://api.github.com/users';
+const BASE_URL = 'https://api.github.com';
 
-// Create an Axios instance with default headers
-const githubApi = axios.create({
-  baseURL: BASE_URL,
-  headers: {
-    'Accept': 'application/vnd.github.v3+json', // Specify the API version
-  },
-});
-
-const GitHubService = {
-  searchUsers: async (query) => {
-    return githubApi.get(`search/users?q=${query}`);
-  },
-  getUser: async (username) => {
-    return githubApi.get(`/${username}`);
-  },
+export const getUsers = async (searchText) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/search/users?q=${searchText}`);
+    return response.data.items;
+  } catch (error) {
+    throw error;
+  }
 };
 
-export default GitHubService;
+export const getUserDetails = async (username) => {
+  try {
+    const response = await axios.get(`${BASE_URL}/users/${username}`);
+    return response.data;
+  } catch (error) {
+    throw error;
+  }
+};

@@ -1,0 +1,21 @@
+/* src/components/List/List.css */
+.user-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .user-list li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    cursor: pointer;
+  }
+  
+  .user-list li img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+  }
+  
